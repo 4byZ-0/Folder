@@ -3708,15 +3708,6 @@ local aa = {
         assert(d.Title, "Paragraph - Missing Title")
         d.Content = d.Content or ""
 
-        -- Función para establecer el contenido
-        function d:SetContent(newContent)
-            d.Content = newContent
-            print("skibidi")  -- Aquí se imprime "skibidi"
-        end  -- Aquí falta el "end" para cerrar la función SetContent
-
-        -- Establecer la metatable y devolver la instancia
-        setmetatable(d, aj)
-        return d
     end
 
     -- Devolver el "constructor" aj
