@@ -3703,34 +3703,43 @@ local aa = {
     aj.__index = aj
     aj.__type = "Paragraph"
 
+    -- Nueva función para crear un "Paragraph"
     function aj.New(c, d)
         assert(d.Title, "Paragraph - Missing Title")
         d.Content = d.Content or ""
 
-        -- Verificar que ac(ag.Element) devuelve una función
-        local elementCreator = ac(ag.Element)
-        if type(elementCreator) ~= "function" then
-            error("ac(ag.Element) no devuelve una función válida")
-        end
-
-        -- Crear el elemento
-        local e = elementCreator(d.Title, d.Content, aj.Container, false)
+        -- Crear el nuevo objeto "Paragraph" utilizando ac(ag.Element)
+        local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
         e.Frame.BackgroundTransparency = 0.92
         e.Border.Transparency = 0.6
 
-        -- Asignar la función SetContent correctamente a d
+        -- Definir la función SetContent como un método de d
         function d:SetContent(SetValue)
             d.Content = SetValue
         end
 
-        -- Establecer la metatable para d
+        -- Establecer la metatable para que d sea tratado como un objeto aj
         setmetatable(d, aj)
 
         return e
     end
 
+    -- Función para actualizar un "Paragraph" existente
+    function aj.Update(OldParagraph, Title, Content)
+        if OldParagraph.Title ~= Title then
+            OldParagraph.Title = Title
+        end
+
+        if OldParagraph.Content ~= Content then
+            OldParagraph.Content = Content
+        end
+
+        return OldParagraph
+    end
+
     return aj
 end,
+
 
 
     [26] = function()
