@@ -3704,15 +3704,9 @@ local aa = {
         function aj.New(c, d)
             assert(d.Title, "Paragraph - Missing Title")
             d.Content = d.Content or ""
-        
-            -- Crear el elemento
-            local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
-            e.Frame.BackgroundTransparency = 0.92
-            e.Border.Transparency = 0.6
-        
-            -- Agregar un método para actualizar el contenido
+
             function d:SetContent(newContent)
-                self.Content = newContent
+                d.Content.Text = newContent
             end
         
             return e
