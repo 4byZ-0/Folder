@@ -3695,53 +3695,25 @@ local aa = {
         end
         return c
     end,
-[25] = function()
-    local aa, ab, ac, ad, ae = b(25)
-    local af = ab.Parent.Parent
-    local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
-
-    aj.__index = aj
-    aj.__type = "Paragraph"
-
-    -- Nueva función para crear un "Paragraph"
-    function aj.New(c, d)
-        assert(d.Title, "Paragraph - Missing Title")
-        d.Content = d.Content or ""
-
-        -- Crear el nuevo objeto "Paragraph" utilizando ac(ag.Element)
-        local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
-        e.Frame.BackgroundTransparency = 0.92
-        e.Border.Transparency = 0.6
-
-        -- Definir la función SetContent como un método de d
-        function d:SetContent(SetValue)
-            d.Content = SetValue
+    [25] = function()
+        local aa, ab, ac, ad, ae = b(25)
+        local af = ab.Parent.Parent
+        local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
+        aj.__index = aj
+        aj.__type = "Paragraph"
+        function aj.New(c, d)
+            assert(d.Title, "Paragraph - Missing Title")
+            d.Content = d.Content or ""
+            local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
+            e.Frame.BackgroundTransparency = 0.92
+            e.Border.Transparency = 0.6
+            function d.SetContent(SetValue)
+                d.Frame.Text = SetValue
+            end
+            return e
         end
-
-        -- Establecer la metatable para que d sea tratado como un objeto aj
-        setmetatable(d, aj)
-
-        return e
-    end
-
-    -- Función para actualizar un "Paragraph" existente
-    function aj.Update(OldParagraph, Title, Content)
-        if OldParagraph.Title ~= Title then
-            OldParagraph.Title = Title
-        end
-
-        if OldParagraph.Content ~= Content then
-            OldParagraph.Content = Content
-        end
-
-        return OldParagraph
-    end
-
-    return aj
-end,
-
-
-
+        return aj
+    end,
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
         local af, ag = game:GetService "UserInputService", ab.Parent.Parent
