@@ -3711,9 +3711,9 @@ local aa = {
         -- Función para establecer el contenido
         function d:SetContent(newContent)
             d.Content = newContent
-        end
+            print("skibidi")
+end
 
-        -- Establecer la metatable y devolver la instancia
         setmetatable(d, aj)
         return d
     end
