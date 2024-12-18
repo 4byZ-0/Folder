@@ -3714,7 +3714,7 @@ local aa = {
         e.Border.Transparency = 0.6
 
         -- Definir el método SetContent correctamente
-        function e:SetContent(newContent)
+        function d:SetContent(newContent)
             self.Content = newContent  -- Establece el contenido del párrafo
             self.Frame.Text = newContent  -- Actualiza el texto visualmente
         end
