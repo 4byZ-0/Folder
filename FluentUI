@@ -3711,16 +3711,17 @@ local aa = {
         -- Función para establecer el contenido
         function d:SetContent(newContent)
             d.Content = newContent
-            print("skibidi")
-end
+            print("skibidi")  -- Aquí se imprime "skibidi"
+        end  -- Aquí falta el "end" para cerrar la función SetContent
 
+        -- Establecer la metatable y devolver la instancia
         setmetatable(d, aj)
         return d
     end
 
     -- Devolver el "constructor" aj
     return aj
-end,  -- Aquí debes agregar la coma al final de la declaración
+end,  -- La coma aquí parece estar bien si forma parte de una tabla más grande
 
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
