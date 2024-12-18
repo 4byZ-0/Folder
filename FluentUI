@@ -3695,25 +3695,40 @@ local aa = {
         end
         return c
     end,
-    [25] = function()
-        local aa, ab, ac, ad, ae = b(25)
-        local af = ab.Parent.Parent
-        local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
-        aj.__index = aj
-        aj.__type = "Paragraph"
-        function aj.New(c, d)
-            assert(d.Title, "Paragraph - Missing Title")
-            d.Content = d.Content or ""
-            local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
-            e.Frame.BackgroundTransparency = 0.92
-            e.Border.Transparency = 0.6
-            function SetContent(SetValue)
-                d.Content = SetValue
-            end
-            return e
+[25] = function()
+    local aa, ab, ac, ad, ae = b(25)
+    local af = ab.Parent.Parent
+    local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
+
+    aj.__index = aj
+    aj.__type = "Paragraph"
+
+    -- Función para crear un nuevo objeto "Paragraph"
+    function aj.New(c, d)
+        assert(d.Title, "Paragraph - Missing Title")
+        d.Content = d.Content or ""
+
+        -- Crear la instancia e con las propiedades Title y Content
+        local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
+        e.Frame.BackgroundTransparency = 0.92
+        e.Border.Transparency = 0.6
+
+        -- Asegúrate de que SetContent sea un método del objeto d
+        function d:SetContent(SetValue)
+            d.Content = SetValue
         end
-        return aj
-    end,
+
+        -- Establecer la metatable para que d se comporte como un objeto aj
+        setmetatable(d, aj)
+
+        -- Devolver la instancia e
+        return e
+    end
+
+    -- Devolver el "constructor" aj
+    return aj
+end,
+
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
         local af, ag = game:GetService "UserInputService", ab.Parent.Parent
