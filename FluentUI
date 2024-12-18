@@ -3704,18 +3704,14 @@ local aa = {
         function aj.New(c, d)
             assert(d.Title, "Paragraph - Missing Title")
             d.Content = d.Content or ""
-    
-        
-            -- Agregar un método para actualizar el contenido
-            function d:SetContent(newContent)
-                d.Content = newContent
+            local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
+            e.Frame.BackgroundTransparency = 0.92
+            e.Border.Transparency = 0.6
+            function SetContent(SetValue)
+                d.Content = SetValue
             end
-            setmetatable(d, aj)
-            return d
-        
+            return e
         end
-        
-        
         return aj
     end,
     [26] = function()
