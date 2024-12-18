@@ -3696,52 +3696,31 @@ local aa = {
         return c
     end,
     [25] = function()
-    local aa, ab, ac, ad, ae = b(25)
-    local af = ab.Parent.Parent
-    local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
-    aj.__index = aj
-    aj.__type = "Paragraph"
-
-    function aj.New(c, d)
-        assert(d.Title, "Paragraph - Missing Title")
-        d.Content = d.Content or ""
-
-        -- Crear el elemento
-        local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
-        e.Frame.BackgroundTransparency = 0.92
-        e.Border.Transparency = 0.6
-
-        -- Verificar que el elemento contiene un TextLabel válido
-        if not e.TextLabel then
-            error("El elemento no contiene un TextLabel para manejar el contenido.")
-        end
-
-        -- Agregar un método para actualizar el contenido
-        function e:SetContent(newContent)
-            -- Verificar que el contenido no sea nulo y sea un string
-            if not newContent or type(newContent) ~= "string" then
-                error("SetContent requiere un string válido")
+        local aa, ab, ac, ad, ae = b(25)
+        local af = ab.Parent.Parent
+        local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
+        aj.__index = aj
+        aj.__type = "Paragraph"
+        function aj.New(c, d)
+            assert(d.Title, "Paragraph - Missing Title")
+            d.Content = d.Content or ""
+        
+            -- Crear el elemento
+            local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
+            e.Frame.BackgroundTransparency = 0.92
+            e.Border.Transparency = 0.6
+        
+            -- Agregar un método para actualizar el contenido
+            function Paragraph:SetValue(Value)
+                self.Frame.Text = Value
             end
-
-            -- Actualizar el contenido en el objeto interno
-            self.Content = newContent
-
-            -- Actualizar la interfaz gráfica
-            if self.TextLabel then
-                self.TextLabel.Text = newContent -- Actualizar el texto en el TextLabel
-            elseif self.Frame and self.Frame.TextLabel then
-                self.Frame.TextLabel.Text = newContent -- Si está dentro del Frame
-            else
-                print("Advertencia: No se encontró un TextLabel para actualizar el contenido.")
-            end
+        
+            return e
         end
-
-        return e
-    end
-
-    return aj
-end
-
+        
+        
+        return aj
+    end,
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
         local af, ag = game:GetService "UserInputService", ab.Parent.Parent
