@@ -3712,7 +3712,7 @@ local aa = {
         
             -- Agregar un método para actualizar el contenido
             function d:SetContent(newContent)
-                d.Content = newContent
+                self.Content = newContent
             end
         
             return e
