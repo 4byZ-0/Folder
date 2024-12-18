@@ -3720,7 +3720,7 @@ local aa = {
 
     -- Devolver el "constructor" aj
     return aj
-end
+end,
 
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
