@@ -3696,25 +3696,32 @@ local aa = {
         return c
     end,
     [25] = function()
-        local aa, ab, ac, ad, ae = b(25)
-        local af = ab.Parent.Parent
-        local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
-        aj.__index = aj
-        aj.__type = "Paragraph"
-        function aj.New(c, d)
+    local aa, ab, ac, ad, ae = b(25)
+    local af = ab.Parent.Parent
+    local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
+
+    aj.__index = aj
+    aj.__type = "Paragraph"
+
+    -- Función para crear un nuevo objeto "Paragraph"
+    function aj.New(c, d)
         assert(d.Title, "Paragraph - Missing Title")
         d.Content = d.Content or ""
-    
+
+        -- Función para establecer el contenido
         function d:SetContent(newContent)
-            d.Content.Text = newContent
+            d.Content = newContent
         end
-    
-        -- Aquí se devuelve la instancia de la clase (d en este caso)
-        setmetatable(d, aj)  -- Asocia la tabla con la clase aj
-        return d  -- Devuelve la instancia de la "Paragraph"
-        end
-        return aj
-    end,
+
+        -- Establecer la metatable y devolver la instancia
+        setmetatable(d, aj)
+        return d
+    end
+
+    -- Devolver el "constructor" aj
+    return aj
+end
+
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
         local af, ag = game:GetService "UserInputService", ab.Parent.Parent
