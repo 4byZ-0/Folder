@@ -3702,12 +3702,17 @@ local aa = {
         aj.__index = aj
         aj.__type = "Paragraph"
         function aj.New(c, d)
-            assert(d.Title, "Paragraph - Missing Title")
-            d.Content = d.Content or ""
+        assert(d.Title, "Paragraph - Missing Title")
+        d.Content = d.Content or ""
+    
+        function d:SetContent(newContent)
+            d.Content.Text = newContent
+        end
+    
+        -- Aquí se devuelve la instancia de la clase (d en este caso)
+        setmetatable(d, aj)  -- Asocia la tabla con la clase aj
+        return d  -- Devuelve la instancia de la "Paragraph"
 
-            function d:SetContent(newContent)
-                d.Content.Text = newContent
-            end
         
         
         end
