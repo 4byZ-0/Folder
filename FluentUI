@@ -3720,7 +3720,8 @@ local aa = {
 
     -- Devolver el "constructor" aj
     return aj
-    end,
+end,  -- Aquí debes agregar la coma al final de la declaración
+
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
         local af, ag = game:GetService "UserInputService", ab.Parent.Parent
