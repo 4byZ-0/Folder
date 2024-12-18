@@ -3709,9 +3709,8 @@ local aa = {
             local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
             e.Frame.BackgroundTransparency = 0.92
             e.Border.Transparency = 0.6
-        
-            -- Agregar un método para actualizar el contenido
-            function e:SetContent(newContent)
+    
+            function d:SetContent(newContent)
                 d.Content = newContent
             end
         
