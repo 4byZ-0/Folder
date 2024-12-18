@@ -3712,7 +3712,20 @@ local aa = {
         
             -- Agregar un método para actualizar el contenido
             function e:SetContent(newContent)
-                self.Frame.Text = Value
+                -- Verificar que el contenido no sea nulo
+                if not newContent or type(newContent) ~= "string" then
+                    error("SetContent requiere un string válido")
+                end
+        
+                -- Actualizar el contenido en el objeto y en la interfaz gráfica
+                self.Content = newContent
+                if self.TextLabel then
+                    self.TextLabel.Text = newContent -- Actualizar el texto si existe un TextLabel
+                elseif self.Frame and self.Frame.Text then
+                    self.Frame.Text = newContent -- Intentar en el Frame
+                else
+                    print("Advertencia: No se encontró TextLabel para actualizar el contenido.")
+                end
             end
         
             return e
