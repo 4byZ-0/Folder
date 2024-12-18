@@ -3709,8 +3709,6 @@ local aa = {
                 d.Content.Text = newContent
             end
         
-            return e
-        end
         
         
         return aj
