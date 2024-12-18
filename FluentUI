@@ -3696,24 +3696,28 @@ local aa = {
         return c
     end,
     [25] = function()
-    local aa, ab, ac, ad, ae = b(25)
-    local af = ab.Parent.Parent
-    local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
-
-    aj.__index = aj
-    aj.__type = "Paragraph"
-
-    -- Función para crear un nuevo objeto "Paragraph"
-    function aj.New(c, d)
-        assert(d.Title, "Paragraph - Missing Title")
-        d.Content = d.Content or ""
-
-    end
-
-    -- Devolver el "constructor" aj
-    return aj
-end,  -- La coma aquí parece estar bien si forma parte de una tabla más grande
-
+        local aa, ab, ac, ad, ae = b(25)
+        local af = ab.Parent.Parent
+        local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
+        aj.__index = aj
+        aj.__type = "Paragraph"
+        function aj.New(c, d)
+            assert(d.Title, "Paragraph - Missing Title")
+            d.Content = d.Content or ""
+    
+        
+            -- Agregar un método para actualizar el contenido
+            function d:SetContent(newContent)
+                d.Content = newContent
+            end
+            setmetatable(d, aj)
+            return d
+        
+        end
+        
+        
+        return aj
+    end,
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
         local af, ag = game:GetService "UserInputService", ab.Parent.Parent
