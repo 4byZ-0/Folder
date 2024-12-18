@@ -3696,47 +3696,31 @@ local aa = {
         return c
     end,
     [25] = function()
-    local aa, ab, ac, ad, ae = b(25)
-    local af = ab.Parent.Parent
-    local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
-    aj.__index = aj
-    aj.__type = "Paragraph"
-
-    function aj.New(c, d)
-        assert(d.Title, "Paragraph - Missing Title")
-        d.Content = d.Content or ""
-
-        -- Crear el elemento
-        local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
-        e.Frame.BackgroundTransparency = 0.92
-        e.Border.Transparency = 0.6
-
-        -- Agregar el método SetContent al objeto e
-        function e:SetContent(newContent)
-            -- Validar que el contenido sea un string
-            if not newContent or type(newContent) ~= "string" then
-                error("SetContent requiere un string válido")
+        local aa, ab, ac, ad, ae = b(25)
+        local af = ab.Parent.Parent
+        local ag, ah, ai, aj = af.Components, ac(af.Packages.Flipper), ac(af.Creator), {}
+        aj.__index = aj
+        aj.__type = "Paragraph"
+        function aj.New(c, d)
+            assert(d.Title, "Paragraph - Missing Title")
+            d.Content = d.Content or ""
+        
+            -- Crear el elemento
+            local e = ac(ag.Element)(d.Title, d.Content, aj.Container, false)
+            e.Frame.BackgroundTransparency = 0.92
+            e.Border.Transparency = 0.6
+        
+            -- Agregar un método para actualizar el contenido
+            function d:SetContent(newContent)
+                d.Content = newContent
             end
-
-            -- Actualizar d.Content
-            d.Content = newContent
-
-            -- Opcionalmente, también actualizar la representación visual (si es necesario)
-            if e.TextLabel then
-                e.TextLabel.Text = newContent
-            elseif e.Frame and e.Frame.TextLabel then
-                e.Frame.TextLabel.Text = newContent
-            else
-                print("Advertencia: No se encontró un TextLabel para actualizar el contenido visual.")
-            end
+        
+            return e
         end
-
-        return e
-    end
-
-    return aj
-end,
-
+        
+        
+        return aj
+    end,
     [26] = function()
         local aa, ab, ac, ad, ae = b(26)
         local af, ag = game:GetService "UserInputService", ab.Parent.Parent
