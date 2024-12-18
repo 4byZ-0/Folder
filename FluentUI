@@ -3721,8 +3721,8 @@ local aa = {
                 self.Content = newContent
                 if self.TextLabel then
                     self.TextLabel.Text = newContent -- Actualizar el texto si existe un TextLabel
-                elseif self.Frame and self.Frame.TextLabel then
-                    self.Frame.TextLabel.Text = newContent -- Intentar en el Frame
+                elseif self.Frame and self.Frame.Text then
+                    self.Frame.Text = newContent -- Intentar en el Frame
                 else
                     print("Advertencia: No se encontró TextLabel para actualizar el contenido.")
                 end
@@ -6025,4 +6025,4 @@ do
             return J(M)
         end
     end
-end
+endf
