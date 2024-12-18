@@ -3712,9 +3712,6 @@ local aa = {
         -- Aquí se devuelve la instancia de la clase (d en este caso)
         setmetatable(d, aj)  -- Asocia la tabla con la clase aj
         return d  -- Devuelve la instancia de la "Paragraph"
-
-        
-        
         end
         return aj
     end,
